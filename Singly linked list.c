@@ -56,6 +56,7 @@ void create(){
 			printf("\n Memory not allocated");
 			exit(1);
 		}
+		printf("\n Node created : ");
 		printf("\n Enter data :- ");
 		scanf("%d", &new->data);
 		new->next = NULL;
@@ -120,6 +121,7 @@ void insert(){
 			}
 		}
 	}
+	printf("\n Node Inserted at position  : %d ", n);
 }
 void delete(){
 	int count = 1;
@@ -145,4 +147,5 @@ void delete(){
 			}
 		}	
 	}
+	printf("\n Node is deleted from position :: %d", n);
 }
