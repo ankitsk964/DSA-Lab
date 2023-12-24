@@ -70,7 +70,7 @@ void create(){
 		}
 		printf("\n Do you want to create More nodes ?");
 		printf("\n Press 'Y' for Yes and 'N' for No : ");
-		choice = getche();
+		scanf("%d", &choice);
 	}
 }
 void display(){
