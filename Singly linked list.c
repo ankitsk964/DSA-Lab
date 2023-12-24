@@ -110,7 +110,7 @@ void insert(){
 		start = new; 
 	}
 	else{
-		while(count != (n-1)){
+		while(count != (n-1) && temp != NULL){
 			count++;
 			c = c -> next;
 			if(count == (n-1)){
