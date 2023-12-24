@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// Created the structure of node
 typedef struct doubly{
 	struct doubly *back;
 	int data;
 	struct doubly *next;
 }dll;
-dll *start, *new, *link;
+dll *start, *new, *link; // Initialized the start pointer to hold the starting address of linked list
+						 // new pointer to hold the address of newly created node
+						 // link pointer to link two nodes 
 
 void create();
 void count();
@@ -16,6 +18,7 @@ void delete();
 void main(){
 	start = NULL;
 	int c;
+	// To Show the Choice menu Infinite times
 	do{
 		printf("\n 1. Create Linked list");
 		printf("\n 2. Display Linked list");
@@ -48,21 +51,23 @@ void main(){
 		}
 	}while(1);
 }
-void create(){
+void create(){ // To create new nodes
 	new = NULL;
 	char choice = 'y';
 	while(choice == 'y' || choice == 'Y'){
 		new = (dll*)malloc(sizeof(dll));
-		if(new == NULL){
-			printf("\n Memory  ot allocated");
+							
+		if(new == NULL){ 		// To check if the new node is created or not
+			printf("\n Memory not allocated");
 			exit(1);
 		}
+		// Too enter data in node
 		printf("\n Enter data in node :- ");
 		scanf("%d", &new->data);
 		new->back = NULL;
 		new->next = NULL;
-	
-		if(start == NULL){
+		
+		if(start == NULL){	// To check if the node is first node or not
 			start = new;
 			link  = new;
 		}
@@ -71,27 +76,29 @@ void create(){
 			new->back = link;
 			link = new;
 		}
+		// To get  choice of user if he/she wants to create more nodes or not
 		printf("\n Do you want to create more nodes ?");
 		printf("\n Press 'Y' for Yes and 'N' for NO :- ");
-		choice = getche();
+		scanf(" %c", &choice);
 	}
 }
-void display(){
-	dll *temp;
-	temp = link;
-	link = start;
+
+void display(){	// Display function to display Linked list 
+	dll *tempf, *tempb;
+	tempb = link;
+	tempf = start;
 	printf("\n List in forward direction : ");
-	while(link != NULL){
-		printf("%d", link->data);
-		link = link->next;
+	while(tempf != NULL){	// To display linked list in forward
+		printf("%d", tempf->data);
+		tempf = tempf->next;
 	}
 	printf("\n List in backward direction : ");
-	while(temp != NULL){
-		printf("%d", temp->data);
-		temp = temp->back;
+	while(tempb != NULL){	// To display linked list in backward direction
+		printf("%d", tempb->data);
+		tempb = tempb->back;
 	}
 }
-void count(){
+void count(){	// To count number of nodes in linked list
 	int count = 0;
 	link = start;
 	while(link != NULL){
@@ -100,42 +107,60 @@ void count(){
 	}	
 	printf("\n Number of nodes are :- %d", count);
 }
-void insert(){
+void insert(){ // To insert a new node in linked list
 	int n,c=1;
-	dll *temp;
+	dll *tem = start;
 	new = (dll*)malloc(sizeof(dll));
-	if(new == NULL){
-		printf("\n Memory not allocated");
+	if(new==NULL){ // To check if new node is created or not
+		printf("\n Memory not allocated ");
 		exit(1);
 	}
+	// To enter data in node
 	printf("\n Enter data in node :- ");
 	scanf("%d", &new->data);
-	printf("\n Enter the position to add node :- ");
-	scanf("%d", &n);
 	new->back = NULL;
 	new->next = NULL;
-	if(n==1){
+	printf("\n Enter the position to insert node :- ");
+	scanf("%d", &n);
+	if(n==1 && start!=NULL){	// To enter node at begining
 		new->next = start;
 		start->back = new;
-		start = new;
+		start=new;
 	}
-	if(n>1){
-		temp = start;
-		while(c != (n-1)){
+	if(n>1){	// To enter node in between 2 nodes
+		while(tem!=NULL && c!=(n-1)){
 			c++;
-			temp = temp->next;
-			if(c== (n-1)){ 
-				
-				new->next = temp->next;
-				temp->next = new;
-				temp->next->back = new;
-				new->back = temp;
-				break;
-			}
-			
+			tem=tem->next;
 		}
+		new->next = tem->next;
+		tem->next->back = new;
+		tem->next = new;
+		new->back = tem;
 	}
 }
-void delete(){
-	printf("not completed");
+
+void delete(){ // To delete a node from linked list
+	int n,c=1;
+	dll *temp = start, *tempadd;
+	printf("\n Enter the node to be deleted :- ");
+	scanf("%d", &n);
+	if(n==1){	// To delete a node from begining 
+		printf("\n Node deleted is %d from position %d", start->data, n);
+		tempadd = start;
+		start = start->next;
+		start->back = NULL;
+	
+	}
+	if(n>1){	// To delete a node  from between of 2 nodes
+		while(temp!=NULL && c!=(n-1)){
+			c++;
+			temp=temp->next;
+		}
+		printf("\n Node deleted is %d from position %d", temp->next->data, n);
+		tempadd = temp->next;
+		temp->next = tempadd->next;
+		tempadd->next->back = temp;
+	}
+	free(tempadd);
+	
 }
