@@ -24,6 +24,7 @@ void main(){
 		printf("\n 3. Print polynomial equation ");
 		printf("\n 4. Add two polynomial ");
 		printf("\n 5. Reset Polynomials ");
+		printf("\n 6. Exit ");
 		printf("\n Enter your choice :- ");
 		scanf("%d", &c);
 		

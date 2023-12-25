@@ -21,6 +21,7 @@ void main(){
 		printf("\n 3. Count nodes in linked list");
 		printf("\n 4. Insert a node");
 		printf("\n 5. Delete a node");
+		printf("\n 6. Exit ");
 		printf("\n Enter you choice :- ");
 		scanf("%d", &c);
 		
