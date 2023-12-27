@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 3
-int stack[MAX], top=-1,element;
+#define MAX 3 // preprocessor directive that define MAX 3
+int stack[MAX], top=-1,element; // Top is used to access the top of stack
 void push();
 void pop();
 void display();
 void main(){
 	int c;
-	do{
+	do{ //  To display the menu to user  infinite times
 		printf("\n 1. Push");
 		printf("\n 2. Pop");
 		printf("\n 3. Display");
@@ -32,7 +32,7 @@ void main(){
 		}
 	}while(1);
 }
-void push(){
+void push(){ // To push an element in stack
 	if(top<MAX-1){
 		top++;
 		printf("\n ENter element to push in stack :- ");
@@ -43,7 +43,7 @@ void push(){
 		printf("\n Stack Overflow");
 	}
 }
-void pop(){
+void pop(){ // To pop an element from stack
 	if(top==-1){
 		printf("\n Stack Underflow");
 	}
@@ -52,7 +52,7 @@ void pop(){
 		top--;
 	}
 }
-void display(){
+void display(){ // To display stack elements
 	int i;
 	if(top==-1){
 		printf("\n Stack Empty");
