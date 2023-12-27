@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct poly{
+typedef struct poly{ // Created the structure of Polynomial
 	int coef;
 	int exp;
 	struct poly *next;
 }pol;
-pol *start, *link, *new;
+pol *start, *link, *new; //start is used to store the address of starting node of 1st polinomial
 pol *start2, *link2;
 pol *start3, *link3;
 void create();
