@@ -38,6 +38,7 @@ void main(){
 	}while(1);
 }
 void push(){
+	new = NULL;
 	new = (stack*)malloc(sizeof(stack));
 	if(new==NULL){
 		printf("\n Memory not allocated");
