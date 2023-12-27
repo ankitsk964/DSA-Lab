@@ -24,6 +24,7 @@ void main(){
 		printf("\n 3. Count nodes in linked list");
 		printf("\n 4. Insert a node");
 		printf("\n 5. Delete a node");
+		printf("\n 6. Exit ");
 		printf("\n Enter you choice :- ");
 		scanf("%d", &c);
 		
@@ -51,7 +52,7 @@ void main(){
 	}while(1);
 }
 int counting = 0; // Variable to count the number of nodes in the Circular linked list
-void create(){
+void create(){ // To create node in circular linked list
 	new = NULL;
 	char choice = 'y';
 	while(choice == 'y' || choice == 'Y'){
@@ -64,7 +65,7 @@ void create(){
 		scanf("%d", &new->data);
 		new->next = NULL;
 		
-		if(start == NULL){
+		if(start == NULL){ // Condition to check whether the linked list is empty or not
 			start = new;
 			link = new;
 		}
@@ -76,7 +77,7 @@ void create(){
 		counting++;
 		printf("\n Do you want to create more nodes ?");
 		printf("\n Enter Y for Yes and N for No :- ");
-		scanf(" %c", &choice);
+		scanf(" %c", &choice); // Taking input to create more nodes
 	}
 }
 void display(){	// To print Circular linked list
@@ -86,7 +87,7 @@ void display(){	// To print Circular linked list
 		return;
 	}
 	printf("\n Enter the number of times you want to print the list :- ");
-	scanf("%d", &c);
+	scanf("%d", &c); // Taking input how many times we want to print circular list
 	cll *temp;
 	temp = start;
 	while(i<=c*counting){ 
@@ -96,10 +97,10 @@ void display(){	// To print Circular linked list
 	}
 	
 }
-void count(){
+void count(){ // To print toal counting of nodes in list
 	printf("\n The total numeber of nodes = %d", counting);
 }
-void insert(){
+void insert(){ // To insert an element in Circular linked list
 	int n,c=1;
 	cll *temp = start;
 	
@@ -115,7 +116,7 @@ void insert(){
 	scanf("%d", &n);
 	new->next = NULL;
 	
-	if(n==1 && start != NULL){
+	if(n==1 && start != NULL){ // To insert an element at begining
 		new->next = start;
 		start = new;
 	}
@@ -123,7 +124,7 @@ void insert(){
 		start = new;
 		link = new;
 	}
-	if(n>1){
+	if(n>1){ // To insert element in between 2 nodes
 		if(n>counting){
 			printf("\n Enter a value from 1 to %d", counting);
 			return;
@@ -137,15 +138,15 @@ void insert(){
 		
 		
 	}
-	counting++;
+	counting++; // Incrementing the nodes count when we insert an element in list
 }
-void delete(){
+void delete(){ // To delete a node from the circular linked list
 	cll *temp, *tempadd;
 	int n,c=1;
 	printf("\n ENter the position of node to be deleted :- ");
 	scanf("%d", &n);
 	
-	if(n==1 && start!= NULL){
+	if(n==1 && start!= NULL){ // To delete a node from the begining
 		printf("\n The node %d is deleted from position %d", start->data, n);
 		temp = start;
 		start = start->next;
@@ -155,7 +156,7 @@ void delete(){
 		printf("\n Linked list Underflow");
 		return;
 	}
-	if(n>1){
+	if(n>1){ // To delete a node  from between 2 nodes
 		tempadd = start;
 		while(c!=(n-1)){
 			c++;
@@ -166,6 +167,6 @@ void delete(){
 		tempadd->next = temp->next;
 		free(temp);
 	}
-	counting--;
+	counting--; // Decrementing counting because we deleted a node from list
 	
 }
