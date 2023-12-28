@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct priorityque{ // Created structure of node in queue
+typedef struct priorityque{ // Created structure of node in queue.
 	int data;
 	int priority;
 	int order;
