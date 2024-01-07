@@ -46,7 +46,7 @@ void buildtree(node *nnode, int num){ // Function to build the Binary Search Tre
     newnode->data = num;
     newnode->left = NULL;
     newnode->right = NULL;
-    if(newnode == NULL){ // Condition to check whether the memory is allocated or not for newnode
+    if(newnode == NULL){ // Condition to check whether the memory is allocated or not for newnode.
         printf("\n Memory cant be allocated :- ");
         exit(1);
     }
